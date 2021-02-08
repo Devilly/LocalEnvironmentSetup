@@ -1,4 +1,4 @@
-# Set rights
+# Loosen PowerShell execution policy
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 
 # Set explorer settings
@@ -22,6 +22,9 @@ $applications = "Google.Chrome", "Microsoft.VisualStudioCode-User-x64", "Microso
 foreach($application in $applications) {
     winget install --id $application --exact --silent
 }
+
+# Install VolumeCtrl
+Start-BitsTransfer -Source https://github.com/Devilly/VolumeCtrl/releases/latest/download/VolumeControl.exe -Destination "$([Environment]::GetFolderPath([Environment+SpecialFolder]::Startup))/VolumeCtrl.exe"
 
 # Restart
 Restart-Computer -Confirm
