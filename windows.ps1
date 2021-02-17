@@ -17,7 +17,16 @@ Add-AppxPackage -Path $path
 Remove-Item -Path $path
 
 # Install other software
-$applications = "Google.Chrome", "Microsoft.VisualStudioCode-User-x64", "Microsoft.WindowsTerminal", "Microsoft.PowerShell", "Docker.DockerDesktop", "SlackTechnologies.Slack", "Microsoft.Teams"
+$applications = @(
+    "Google.Chrome",
+    "Microsoft.VisualStudioCode-User-x64",
+    "Microsoft.WindowsTerminal",
+    "Microsoft.PowerToys",
+    "Microsoft.PowerShell",
+    "Docker.DockerDesktop",
+    "SlackTechnologies.Slack",
+    "Microsoft.Teams"
+)
 
 foreach($application in $applications) {
     winget install --id $application --exact --silent
