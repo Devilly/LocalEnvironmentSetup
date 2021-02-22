@@ -23,6 +23,7 @@ $applications = @(
     "Microsoft.WindowsTerminal",
     "Microsoft.PowerToys",
     "Microsoft.PowerShell",
+    "Microsoft.dotnet",
     "Docker.DockerDesktop",
     "SlackTechnologies.Slack",
     "Microsoft.Teams"
