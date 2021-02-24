@@ -12,5 +12,6 @@ jobs:
     steps:
     - name: Checkout source
       uses: actions/checkout@v2
-    - name: Download AutoHotkey
+    - name: Run script
       run: ./windows.ps1
+      shell: powershell
