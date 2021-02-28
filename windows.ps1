@@ -1,3 +1,7 @@
+# Author: Devilly
+# Summary: installation of authors development environment
+# Details: needs to be executed with Windows PowerShell as administrator
+
 # Loosen PowerShell execution policy
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 
@@ -8,7 +12,7 @@ Set-ItemProperty -Path $path -Name HideFileExt -Value 0
 Set-ItemProperty -Path $path -Name Hidden -Value 1
 
 # Install winget
-$path = Join-Path . winget.appxbundle
+$path = Join-Path -Path . -ChildPath winget.appxbundle
 
 Start-BitsTransfer -Source https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.appxbundle -Destination $path
 
@@ -34,7 +38,7 @@ foreach($application in $applications) {
 }
 
 # Install VolumeCtrl
-$path = Join-Path ([Environment]::GetFolderPath([Environment+SpecialFolder]::Startup)) VolumeCtrl.exe
+$path = Join-Path -Path ([Environment]::GetFolderPath([Environment+SpecialFolder]::Startup)) -ChildPath VolumeCtrl.exe
 Start-BitsTransfer -Source https://github.com/Devilly/VolumeCtrl/releases/latest/download/VolumeCtrl.exe -Destination $path
 
 # Restart
