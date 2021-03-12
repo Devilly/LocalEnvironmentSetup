@@ -5,10 +5,17 @@
 # Loosen PowerShell execution policy
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 
-# Set explorer settings
+# Show all icons in the notification area
+$path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer"
+
+Set-ItemProperty -Path $path -Name EnableAutoTray -Value 0
+
+# Set advanced explorer settings...
 $path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
 
+# ...show file extensions
 Set-ItemProperty -Path $path -Name HideFileExt -Value 0
+# ...show hidden files
 Set-ItemProperty -Path $path -Name Hidden -Value 1
 
 # Install winget
@@ -20,7 +27,7 @@ Add-AppxPackage -Path $path
 
 Remove-Item -Path $path
 
-# Install other software
+# Install applications
 $applications = @(
     "Google.Chrome",
     "Microsoft.VisualStudioCode-User-x64",
