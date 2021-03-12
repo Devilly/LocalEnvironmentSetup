@@ -18,6 +18,20 @@ Set-ItemProperty -Path $path -Name HideFileExt -Value 0
 # ...show hidden files
 Set-ItemProperty -Path $path -Name Hidden -Value 1
 
+# Set some Windows locale settings
+Set-WinSystemLocale -SystemLocale en-US
+Set-TimeZone -Id "W. Europe Standard Time"
+
+$inputTipUnitedStatesInternational = "0409:00020409"
+
+$languageList = New-WinUserLanguageList -Language "en-US"
+$languageList[0].Spellchecking = $false
+$languageList[0].InputMethodTips.Clear()
+$languageList[0].InputMethodTips.Add($inputTipUnitedStatesInternational)
+Set-WinUserLanguageList -LanguageList $languageList -Force
+
+Set-WinDefaultInputMethodOverride -InputTip $inputTipUnitedStatesInternational
+
 # Install winget
 $path = Join-Path -Path . -ChildPath winget.appxbundle
 
