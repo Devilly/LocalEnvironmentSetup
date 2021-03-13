@@ -47,21 +47,21 @@ Remove-Item -Path $path
 
 # Install applications
 $applications = @(
-    "Google.Chrome",
-    "Microsoft.VisualStudioCode-User-x64",
-    "Microsoft.WindowsTerminal",
-    "Microsoft.PowerToys",
-    "Microsoft.PowerShell",
-    "Docker.DockerDesktop"
+    "Google.Chrome"
+    "Microsoft.VisualStudioCode-User-x64"
+    "Microsoft.WindowsTerminal"
+    "Microsoft.PowerToys"
+    "Microsoft.PowerShell"
 )
 
 if($deviceType -contains "hobby") {
-    $applications += ,"Microsoft.dotnet"
+    $applications += "Microsoft.dotnet"
 }
 
 if($deviceType -contains "work") {
     $applications += $(
-        "SlackTechnologies.Slack",
+        "Docker.DockerDesktop"
+        "SlackTechnologies.Slack"
         "Microsoft.Teams"
     )
 }
