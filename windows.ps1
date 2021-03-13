@@ -2,6 +2,8 @@
 # Summary: installation of authors development environment
 # Details: needs to be executed with Windows PowerShell as administrator
 
+Param($deviceType)
+
 # Loosen PowerShell execution policy
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 
@@ -50,11 +52,19 @@ $applications = @(
     "Microsoft.WindowsTerminal",
     "Microsoft.PowerToys",
     "Microsoft.PowerShell",
-    "Microsoft.dotnet",
-    "Docker.DockerDesktop",
-    "SlackTechnologies.Slack",
-    "Microsoft.Teams"
+    "Docker.DockerDesktop"
 )
+
+if($deviceType -contains "hobby") {
+    $applications += ,"Microsoft.dotnet"
+}
+
+if($deviceType -contains "work") {
+    $applications += $(
+        "SlackTechnologies.Slack",
+        "Microsoft.Teams"
+    )
+}
 
 foreach($application in $applications) {
     winget install --id $application --exact --silent
