@@ -24,12 +24,14 @@ Set-TimeZone -Id "W. Europe Standard Time"
 
 $inputTipUnitedStatesInternational = "0409:00020409"
 
-$languageList = New-WinUserLanguageList -Language "en-US"
+$languageList = New-WinUserLanguageList -Language en-US
 $languageList[0].Spellchecking = $false
 $languageList[0].InputMethodTips.Clear()
 $languageList[0].InputMethodTips.Add($inputTipUnitedStatesInternational)
 Set-WinUserLanguageList -LanguageList $languageList -Force
 
+# Make sure US International is always the preferred input method
+# Can prevent unwanted behaviour when adding other languages, e.g.
 Set-WinDefaultInputMethodOverride -InputTip $inputTipUnitedStatesInternational
 
 # Install winget
