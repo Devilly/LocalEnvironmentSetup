@@ -55,7 +55,10 @@ $applications = @(
 )
 
 if($deviceType -contains "hobby") {
-    $applications += "Microsoft.dotnet"
+    $applications += $(
+        "Microsoft.dotnet"
+        "KDE.Krita"
+    )
 }
 
 if($deviceType -contains "work") {
