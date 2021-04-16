@@ -4,9 +4,6 @@
 
 Param($deviceType)
 
-# Loosen PowerShell execution policy
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
-
 # Show all icons in the notification area
 $path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer"
 
