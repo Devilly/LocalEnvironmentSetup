@@ -45,7 +45,7 @@ Remove-Item -Path $path
 # Install applications
 $applications = @(
     "Google.Chrome"
-    "Microsoft.VisualStudioCode-User-x64"
+    "Microsoft.VisualStudioCode.User-x64"
     "Microsoft.WindowsTerminal"
     "Microsoft.PowerToys"
     "Microsoft.PowerShell"
